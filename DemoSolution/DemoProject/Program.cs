@@ -12,4 +12,11 @@ namespace DemoApp
         {
         }
     }
+
+    class Another
+    {
+        static void h()
+        {
+        }
+    }
 }
