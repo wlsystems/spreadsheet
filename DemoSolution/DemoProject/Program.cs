@@ -12,7 +12,9 @@ namespace DemoApp
         {
         }
     }
-
+    /// <summary>
+    /// test
+    /// </summary>
     class Another
     {
         static void h()
