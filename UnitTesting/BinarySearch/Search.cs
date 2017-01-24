@@ -1,7 +1,6 @@
-﻿// Written by Joe Zachary for CS 3500, January 2016.
+﻿// Written by Joe Zachary for CS 3500, January 2017.
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace UnitTestDemo
@@ -14,7 +13,7 @@ namespace UnitTestDemo
         /// <summary>
         /// Exercises the Find method.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        //[ExcludeFromCodeCoverage]
         public static void Main(string[] args)
         {
             var numbers = new List<int>();

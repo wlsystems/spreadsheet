@@ -1,4 +1,4 @@
-﻿// Written by Joe Zachary for CS 3500, January 2016
+﻿// Written by Joe Zachary for CS 3500, January 2017
 
 using System;
 
@@ -40,14 +40,25 @@ namespace UnitTestDemo
         /// <summary>
         /// Adds value to the end of this ArrayList.
         /// </summary>
-        public void AddLast(String value)
+        public void AddLast(string value)
         {
             if (values.Length == size)
             {
-                Array.Resize(ref values, size * 2);
+                Scale(2);
             }
             values[size] = value;
             size++;
+        }
+
+        /// <summary>
+        /// Increases the size of the values array by the given
+        /// factor, copying over the existing list elements.
+        /// Returns the final size of the values array.
+        /// </summary>
+        private int Scale (int factor)
+        {
+            Array.Resize(ref values, values.Length * factor);
+            return values.Length;
         }
 
         /// <summary>
