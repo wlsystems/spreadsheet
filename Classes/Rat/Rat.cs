@@ -23,7 +23,7 @@ namespace LectureExamples
             Console.WriteLine(r1 + " == " + r2 + " = " + (r1 == r2));
             Console.WriteLine(r1 + " != " + r2 + " = " + (r1 != r2));
             Console.WriteLine("Hash of " + r1 + " = " + r1.GetHashCode());
-            Console.WriteLine(r1 + " + " + 7 + " = " + (r1 + 7));
+            Console.WriteLine(r1 + " + " + 7 + " = " + (7 + r1));
             //ReferenceEquals(r1, r2);
         }
     }

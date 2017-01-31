@@ -11,7 +11,8 @@ namespace LectureExamples
     /// Defines a class with two public properties.
     /// When an object is created, it is allocated on the
     /// heap and a reference is stored.
-    /// A class is defines a "reference type"
+    /// 
+    /// A class defines a "reference type"
     /// </summary>
     public class Person1
     {
@@ -28,7 +29,9 @@ namespace LectureExamples
     /// Defines a struct with two public properties.
     /// When a struct is created, it is allocated in place.
     /// There is no reference.
+    /// 
     /// A struct defines a "value type"
+    /// Think of the idea of value type as being a generalization of primitive types
     /// </summary>
     public struct Person2
     {
