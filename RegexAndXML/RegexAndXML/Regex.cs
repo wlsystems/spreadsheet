@@ -19,10 +19,12 @@ namespace RegexAndXML
             Regex r3 = new Regex(@"(\d+\.\d*) | (\d*\.\d+)", RegexOptions.IgnorePatternWhitespace);
 
             // A decimal number regex that matches an entire line
-            Regex r4 = new Regex("^((\\d*\\.\\d+) | (\\d+\\.\\d*))$", RegexOptions.IgnorePatternWhitespace);
+            Regex r4 = new Regex("^((\\d*\\.\\d+) | (\\d+\\.\\d*))$", 
+                RegexOptions.IgnorePatternWhitespace);
 
             // A decimal number regex that matches an entire string
-            Regex r5 = new Regex("^((\\d*.\\d+) | (\\d+.\\d*))$", RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
+            Regex r5 = new Regex("^((\\d*\\.\\d+) | (\\d+\\.\\d*))$", 
+                RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
 
             // Does a string contain a match?
             Console.WriteLine("Test 1: " + r3.IsMatch("One 22.5 two 36.7 three .777 four"));
