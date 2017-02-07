@@ -11,6 +11,37 @@ namespace RegexAndXML
     {
         public static void Main(string[] args)
         {
+            // Phone number:  123-456-7890  (123) 456-7890
+            Regex phone = new Regex(@"\b((\([2-9]\d\d\) \d{3}-\d{4})|([2-9]\d\d-\d{3}-\d{4}))\b");
+
+            /* Counts phone numbers
+            string line;
+            int count = 0;
+            
+            while ((line = Console.ReadLine()) != null)
+            {
+                foreach (Match m in phone.Matches(line))
+                {
+                    //Console.WriteLine(m);
+                    m.
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+            */
+
+            // Redact phone numbers
+            string line;
+
+            while ((line = Console.ReadLine()) != null)
+            {
+                Console.WriteLine(phone.Replace(line, "###-###-####"));
+            }
+        }
+
+
+        public static void Mainx(string[] args)
+        {
             // Two ways to create an "identifier" regex
             Regex r1 = new Regex("[a-zA-Z][a-zA-Z0-9]*");
             Regex r2 = new Regex("[a-z][a-z0-9]*", RegexOptions.IgnoreCase);

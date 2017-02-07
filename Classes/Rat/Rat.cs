@@ -99,6 +99,15 @@ namespace LectureExamples
             }
         }
 
+        public static Rat operator *(Rat r1, Rat r2)
+        {
+            checked
+            {
+                return new Rat(r1.num * r2.den + r1.den * r2.num,
+                               r1.den * r2.den);
+            }
+        }
+
         // TODO: This is a test
         // Note the use of the override keyword, required if you want to
         // override an inherited method.
