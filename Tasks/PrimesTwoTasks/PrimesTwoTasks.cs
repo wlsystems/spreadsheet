@@ -22,8 +22,8 @@ namespace Primes
         /// </summary>
         public static int CountOddPrimesTwoTasks(int maxPrime)
         {
-            Task<int> t1 = Task.Run(() => Primes.CountPrimesInInterval(1, 14000000, 4));
-            Task<int> t2 = Task.Run(() => Primes.CountPrimesInInterval(3, 14000000, 4));
+            Task<int> t1 = Task.Run(() => Primes.CountPrimesInInterval(1, maxPrime, 4));
+            Task<int> t2 = Task.Run(() => Primes.CountPrimesInInterval(3, maxPrime, 4));
             return t1.Result + t2.Result;
         }
     }

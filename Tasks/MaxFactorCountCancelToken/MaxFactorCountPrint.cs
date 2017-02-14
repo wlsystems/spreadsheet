@@ -2,7 +2,7 @@
 
 namespace Factors
 {
-    public class MaxFactorCountPrint : MaxFactorCount
+    public class MaxFactorCountPrint: MaxFactorCount
     {
         /// <summary>
         /// The number currently known to have the most factors
