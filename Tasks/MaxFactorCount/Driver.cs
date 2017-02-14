@@ -7,7 +7,10 @@ namespace Factors
     {
         public static void Main(string[] args)
         {
-            MaxFactorCount counter = new MaxFactorCountPrint();
+            MaxFactorCount counter;
+            counter = new MaxFactorCount();
+            //counter = new MaxFactorCountPrint();
+            //counter = new MaxFactorCountPrintSync();
             Stopwatch sw = new Stopwatch();
             sw.Start();
             int number = counter.FindMaxFactors(120000, 7);
