@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Factors
+namespace FactorsToken
 {
     public class MaxFactorCountPrint: MaxFactorCount
     {

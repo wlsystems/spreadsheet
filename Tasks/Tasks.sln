@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxFactorCountCancelToken",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synchronization", "Synchronization\Synchronization.csproj", "{05609E31-4D60-4167-89E9-08070E6E3069}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxFactorGUI", "MaxFactorGUI\MaxFactorGUI.csproj", "{98E6A083-6594-46FD-8C71-4F1904F65788}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{05609E31-4D60-4167-89E9-08070E6E3069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05609E31-4D60-4167-89E9-08070E6E3069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05609E31-4D60-4167-89E9-08070E6E3069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E6A083-6594-46FD-8C71-4F1904F65788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E6A083-6594-46FD-8C71-4F1904F65788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E6A083-6594-46FD-8C71-4F1904F65788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E6A083-6594-46FD-8C71-4F1904F65788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

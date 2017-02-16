@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Factors
+namespace FactorsToken
 {
     class Driver
     {
@@ -10,9 +12,16 @@ namespace Factors
             try
             {
                 MaxFactorCount counter = new MaxFactorCountPrintSync();
+
+                // Create a cancellation token
+                CancellationTokenSource source = new CancellationTokenSource();
+
+                // Start a task to do cancellation
+                Task.Run(() => WaitForStopRequest(source));
+
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
-                int number = counter.FindMaxFactors(120000, 7);
+                int number = counter.FindMaxFactors(120000, 7, source.Token);
                 sw.Stop();
                 Console.WriteLine("Time = " + sw.ElapsedMilliseconds + " msecs");
                 Console.WriteLine(number + " has " + MaxFactorCount.CountFactors(number) + " factors");
@@ -22,6 +31,15 @@ namespace Factors
                 Console.WriteLine("Operation canceled");
             }
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Cancels an ongoing computation if a line is entered
+        /// </summary>
+        private static void WaitForStopRequest(CancellationTokenSource source)
+        {
+            Console.ReadLine();
+            source.Cancel();
         }
     }
 }

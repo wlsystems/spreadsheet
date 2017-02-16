@@ -1,4 +1,4 @@
-﻿namespace Factors
+﻿namespace FactorsToken
 {
     public class MaxFactorCountPrintSync: MaxFactorCountPrint
     {

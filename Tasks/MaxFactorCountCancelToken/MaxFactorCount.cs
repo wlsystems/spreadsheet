@@ -2,33 +2,27 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Factors
+namespace FactorsToken
 {
     public class MaxFactorCount
     {
         /// <summary>
         /// Returns the integer between 1 and limit that has the most factors,
-        /// using nTasks Tasks.  If the operation is canceled, returns 0.
+        /// using nTasks Tasks.  If the operation is canceled, throws OperationCanceledException.
         /// </summary>
-        public int FindMaxFactors(int limit, int nTasks)
+        public int FindMaxFactors(int limit, int nTasks, CancellationToken token)
         {
-            // Create a CancellationToken
-            CancellationTokenSource source = new CancellationTokenSource();
-
             // Use multiple Tasks to solve slices of the problem
             Task<int>[] tasks = new Task<int>[nTasks];
             for (int i = 0; i < nTasks; i++)
             {
                 int begin = i + 1;
-                tasks[i] = Task.Run(() => FindMaxFactorsInInterval(begin, limit, nTasks, source.Token), source.Token);
+                tasks[i] = Task.Run(() => FindMaxFactorsInInterval(begin, limit, nTasks, token), token);
             }
-
-            // Start a task that waits for the user to stop the computation
-            Task.Run(() => WaitForStopRequest(source));
 
             // Wait for all the tasks to terminate.  This will throw an OperationCanceledException
             // if any of the tasks is canceled.
-            Task.WaitAll(tasks, source.Token);
+            Task.WaitAll(tasks, token);
 
             // Find and return the best result found by the Tasks
             int maxFactors = 0;
@@ -45,16 +39,6 @@ namespace Factors
             }
             return maxFactors;
         }
-
-        /// <summary>
-        /// Cancels an ongoing computation if a line is entered
-        /// </summary>
-        private void WaitForStopRequest (CancellationTokenSource source)
-        {
-            Console.ReadLine();
-            source.Cancel();
-        }
-
 
         /// <summary>
         /// Returns the integer in the set
