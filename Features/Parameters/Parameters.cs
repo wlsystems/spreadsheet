@@ -47,8 +47,17 @@ namespace LectureExamples
             Console.WriteLine("Before " + A[0] + " " + A[1]);
             swap(ref A[0], ref A[1]);
             Console.WriteLine(" After " + A[0] + " " + A[1]);
+            Console.WriteLine(Solver(1, 2, 3, out x, out y));
+            Console.WriteLine(x + " " + y);
         }
+        public static int Solver(double a, double b, double c,
+                                            out double x1, out double x2)
+        {
+            x1 = 1;
+            x2 = 2;
+            return 3;
 
+        }
         /// <summary>
         /// Returns the number of roots of the equation ax^2 + bx + c = 0.
         /// Stores the first root (if there is one) into x1, and the second

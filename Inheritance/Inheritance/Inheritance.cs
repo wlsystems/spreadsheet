@@ -2,6 +2,7 @@
 // Revised by Joe Zachary, February 3, 2016
 using System;
 
+
 namespace Inherit
 {
     /// <summary>
@@ -14,7 +15,7 @@ namespace Inherit
         /// </summary>
         public static void Main()
         {
-            // Dog stored in Dog variable
+         // Dog stored in Dog variable
             Dog dog = new Dog("Spot", "mutt");
             Console.WriteLine("Dog stored as Dog says " + dog.Speak() + " and shouts " + dog.Shout());
             Console.ReadLine();
@@ -98,7 +99,10 @@ namespace Inherit
         /// will force derived classes to override.
         /// </summary>
         /// <returns></returns>
-        public abstract String Speak();
+        public virtual String Speak()
+        {
+            return "Arg";
+        }
 
         /// <summary>
         /// An upper-case version of what the animal Speaks.
@@ -221,13 +225,14 @@ namespace Inherit
             }
         }
 
+
         /// <summary>
         /// What a spider says.
         /// </summary>
         /// <returns></returns>
-        public override String Speak()
+        public String Speak()
         {
-            return "ick";
+            return "ickK";
         }
 
         /// <summary>

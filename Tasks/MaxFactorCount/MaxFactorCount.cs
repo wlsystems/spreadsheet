@@ -15,7 +15,7 @@ namespace Factors
             for (int i = 0; i < nTasks; i++)
             {
                 int begin = i + 1;
-                tasks[i] = Task.Run(() => FindMaxFactorsInInterval(begin, limit, nTasks));
+                tasks[i] = Task.Factory.StartNew(() => FindMaxFactorsInInterval(begin, limit, nTasks));
             }
 
             // Find and return the best result found by the Tasks

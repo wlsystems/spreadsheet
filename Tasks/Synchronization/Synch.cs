@@ -11,7 +11,7 @@ namespace Synchronization
         /// </summary>
         public static void Main()
         {
-            new Synch().Compute(100000000);
+            new Synch().Compute(10000);
             Console.ReadLine();
         }
 
@@ -32,7 +32,7 @@ namespace Synchronization
             t1.Start();
             t2.Start();
 
-            while (!t1.IsCompleted || !t2.IsCompleted)
+            while (!t1.IsCompleted | !t2.IsCompleted)
             {
                 Console.WriteLine(Total);
                 Thread.Sleep(500);
@@ -53,14 +53,16 @@ namespace Synchronization
             {
                 while (n > 0)
                 {
-                    lock (this)
+                    //lock (this)
                     {
                         Total++;
                     }
                     n--;
+
                 }
             }
             Console.WriteLine("Add done");
+
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace Synchronization
             {
                 while (n > 0)
                 {
-                    lock(this)
+                    //lock(this)
                     {
                         Total--;
                     }

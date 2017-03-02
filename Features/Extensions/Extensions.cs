@@ -26,6 +26,16 @@ namespace LectureExamples
 
             // Use another list extension method
             Console.WriteLine(list.ScaleSum(10));
+            Console.WriteLine(String.Join(",", list));
+            IEnumerable<int> iint = list.joinScale(3);
+            foreach (int inti in iint)
+                Console.WriteLine(inti);
+        }
+
+        private static IEnumerable<int> joinScale(this List<int> l, int scalefactor)
+        {
+            foreach (int i in l)
+                yield return i * scalefactor;
         }
 
 

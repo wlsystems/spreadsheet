@@ -9,11 +9,11 @@ namespace Factors
         {
             MaxFactorCount counter;
             counter = new MaxFactorCount();
-            //counter = new MaxFactorCountPrint();
-            //counter = new MaxFactorCountPrintSync();
-            Stopwatch sw = new Stopwatch();
+            counter = new MaxFactorCountPrint();
+            counter = new MaxFactorCountPrintSync();
+            Stopwatch sw = new Stopwatch(); 
             sw.Start();
-            int number = counter.FindMaxFactors(120000, 7);
+            int number = counter.FindMaxFactors(120000, 23);
             sw.Stop();
             Console.WriteLine("Time = " + sw.ElapsedMilliseconds + " msecs");
             Console.WriteLine(number + " has " + MaxFactorCount.CountFactors(number) + " factors");

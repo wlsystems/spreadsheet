@@ -34,6 +34,8 @@ namespace LectureExamples
             // positive (if x is larger than y), and zero (if x and y are equal).
 
             // This sorts in the usual fashion.  We pass in an existing method.
+            //list.Sort();
+            Console.WriteLine(String.Compare("a","b"));
             list.Sort(String.Compare);
             Console.WriteLine(String.Join(", ", list));
 
@@ -48,6 +50,8 @@ namespace LectureExamples
             // This sorts by length.  We pass in a lambda.
             list.Sort((x, y) => x.Length - y.Length);
             Console.WriteLine(String.Join(", ", list));
+
+            FilteringExamples();
         }
 
         /// <summary>
@@ -96,6 +100,8 @@ namespace LectureExamples
             list.Add("long string");
             list.Add("a");
             list.Add("another long string");
+            list.Add("fish");
+            list.Add("boat");
 
             // We pass in a method that we defined above
             Console.WriteLine(String.Join(", ", FilterList(list, LongerThan5)));
@@ -117,6 +123,11 @@ namespace LectureExamples
             // Lambda expressions (anonymous methods) can be stored in variables.
             Finder f3 = s => s.Length == 3;
             Console.WriteLine(f3("joe"));
+
+            IEnumerable<string> fl = FilterList(list, usual());
+            foreach (string r in fl)
+                Console.WriteLine(r + "$");
+
         }
 
 
@@ -131,7 +142,10 @@ namespace LectureExamples
             return s => s.Length > x;
         }
 
-
+        public static Finder usual ()
+        {
+            return s => s.CompareTo("f") < 0;
+        }
 
         /// <summary>
         /// Another way to declare the type of a delegate

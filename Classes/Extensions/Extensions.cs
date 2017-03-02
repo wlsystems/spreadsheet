@@ -23,4 +23,12 @@ namespace ExtensionDemo
             return a;
         }
     }
+    public class Test
+    {
+        public virtual int LargestFactor(int n)
+        { // Code goes here but is not shown }
+            return n;
+
+        }
+    }
 }

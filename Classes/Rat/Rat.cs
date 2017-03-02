@@ -6,10 +6,11 @@ using ExtensionDemo;
 
 namespace LectureExamples
 {
+
     /// <summary>
     /// Demonstrates the Rat class
     /// </summary>
-    public class RatDemo
+    public class RatDemo : Test
     {
         /// <summary>
         /// Demonstrate the Rat class
@@ -17,175 +18,226 @@ namespace LectureExamples
         /// <param name="args"></param>
         public static void Main(String[] args)
         {
-            Rat r1 = new Rat(3, 4);
-            Rat r2 = new Rat(5, 6);
+            Rat r1;
+            r1 = new Rat(3, 4);
+            Rat r2;
+            r2 = new Rat(3, 4);
+            Console.WriteLine(r1.GetType());
             Console.WriteLine(r1 + " + " + r2 + " = " + (r1 + r2));
             Console.WriteLine(r1 + " == " + r2 + " = " + (r1 == r2));
             Console.WriteLine(r1 + " != " + r2 + " = " + (r1 != r2));
             Console.WriteLine("Hash of " + r1 + " = " + r1.GetHashCode());
             Console.WriteLine(r1 + " + " + 7 + " = " + (7 + r1));
-            //ReferenceEquals(r1, r2);
-        }
-    }
+            Console.WriteLine(ReferenceEquals(r1, r2));
+            r1 = new Rat(1, 2);
+            r2 = new Rat(1, 3);
+            Console.WriteLine((r1 < r2).ToString());
+            RatDemo rd = new RatDemo();
+            Console.WriteLine(rd.LargestFactor(3));
 
-    /// <summary>
-    /// Provides rational numbers that can be expressed as ratios
-    /// of machine integers.  Rats are immutable.
-    /// </summary>
-    public class Rat
-    {
-        /// <summary>
-        /// The numerator of this rational number
-        /// </summary>
-        private int num;
-
-        /// <summary>
-        /// The denominator of this rational number
-        /// </summary>
-        private int den;
-
-        /// <summary>
-        /// Creates 0.  Note how "this(0)" invokes the 
-        /// 1-argument constructor.
-        /// </summary>
-        public Rat() : this(0)
-        {
         }
 
-        /// <summary>
-        /// Creates n.  Note how "this(0)" invokes the
-        /// 2-argument constructor.
-        /// </summary>
-        public Rat(int n)
-            : this(n, 1)      // "this" the 2-argument constructor
-        {
-        }
+
+
 
         /// <summary>
-        /// Creates n/d.
+        /// Provides rational numbers that can be expressed as ratios
+        /// of machine integers.  Rats are immutable.
         /// </summary>
-        /// <exception cref="System.ArgumentException">If d == 0</exception>
-        public Rat(int n, int d)
+        public class Rat
         {
-            if (d == 0)
+            /// <summary>
+            /// The numerator of this rational number
+            /// </summary>
+            private int num;
+
+            /// <summary>
+            /// The denominator of this rational number
+            /// </summary>
+            private int den;
+            /// Returns the largest factor of n, other than n itself.
+
+
+            /// <summary>
+            /// Creates 0.  Note how "this(0)" invokes the 
+            /// 1-argument constructor.
+            /// </summary>
+            public Rat() : this(0)
             {
-                throw new ArgumentException("Zero denominator not allowed");
             }
-            int g = n.Gcd(d);
-            if (d > 0)
+
+            /// <summary>
+            /// Creates n.  Note how "this(0)" invokes the
+            /// 2-argument constructor.
+            /// </summary>
+            public Rat(int n)
+                : this(n, 1)      // "this" the 2-argument constructor
             {
-                num = n / g;
-                den = d / g;
             }
-            else
+
+            /// <summary>
+            /// Creates n/d.
+            /// </summary>
+            /// <exception cref="System.ArgumentException">If d == 0</exception>
+            public Rat(int n, int d)
             {
-                num = -n / g;
-                den = -d / g;
+                if (d == 0)
+                {
+                    throw new ArgumentException("Zero denominator not allowed");
+                }
+                int g = n.Gcd(d);
+                if (d > 0)
+                {
+                    num = n / g;
+                    den = d / g;
+                }
+                else
+                {
+                    num = -n / g;
+                    den = -d / g;
+                }
             }
-        }
 
-        /// <summary>
-        /// Returns the sum of r1 and r2.  Note how this method defines 
-        /// a new operator.  Also note the use of the checked block.  
-        /// Without it, the arithmetic overflows within would be ignored.
-        /// </summary>
-        /// <exception cref="System.OverflowException">When arithmetic overflow</exception>
-        public static Rat operator +(Rat r1, Rat r2)
-        {
-            checked
+            /// <summary>
+            /// Returns the sum of r1 and r2.  Note how this method defines 
+            /// a new operator.  Also note the use of the checked block.  
+            /// Without it, the arithmetic overflows within would be ignored.
+            /// </summary>
+            /// <exception cref="System.OverflowException">When arithmetic overflow</exception>
+            public static Rat operator +(Rat r1, Rat r2)
             {
-                return new Rat(r1.num * r2.den + r1.den * r2.num,
-                               r1.den * r2.den);
+                checked
+                {
+                    return new Rat(r1.num * r2.den + r1.den * r2.num,
+                                   r1.den * r2.den);
+                }
             }
-        }
 
-        public static Rat operator *(Rat r1, Rat r2)
-        {
-            checked
+            public static Rat operator *(Rat r1, Rat r2)
             {
-                return new Rat(r1.num * r2.den + r1.den * r2.num,
-                               r1.den * r2.den);
+                checked
+                {
+                    return new Rat(r1.num * r2.den + r1.den * r2.num,
+                                   r1.den * r2.den);
+                }
             }
-        }
 
-        // TODO: This is a test
-        // Note the use of the override keyword, required if you want to
-        // override an inherited method.
-
-        /// <summary>
-        /// Returns a standard string representation of a rational number.
-        /// Note the use of the override keyword, which is required if you
-        /// want to override an inherited method.
-        /// </summary>
-        public override string ToString()
-        {
-            if (den == 1)
+            public static Rat operator -(Rat r1, Rat r2)
             {
-                return num.ToString();
+                checked
+                {
+                    return new Rat(r1.num * r2.den - r2.num * r1.den, r1.den * r2.den);
+                }
+
             }
-            else
+
+            public static Rat operator >(Rat r1, Rat r2)
             {
-                return num + "/" + den;
+                checked
+                {
+                    double d = (double)r1.num / r1.den;
+                    double d1 = (double)r2.num / r2.den;
+                    if (d > d1)
+                        return (new Rat(r1.num, r1.den));
+                    else
+                        return (new Rat(r2.num, r2.den));
+                }
+
             }
-        }
 
-        /// <summary>
-        /// Reports whether this and o are the same rational number.
-        /// </summary>
-        public override bool Equals(object o)
-        {
-            // Cast o to be a Rat.  If the cast fails, we get null back.
-            Rat r = o as Rat;
-
-            // Make sure r is non-null and its numerator and denominator
-            // are the same as those of this.
-            return
-                !ReferenceEquals(r, null) &&
-                this.num == r.num &&
-                this.den == r.den;
-        }
-
-        /// <summary>
-        /// Tests for equality
-        /// </summary>
-        public static bool operator ==(Rat r1, Rat r2)
-        {
-            if (ReferenceEquals(r1, null))
+            public static Rat operator <(Rat r1, Rat r2)
             {
-                return ReferenceEquals(r2, null);
+                checked
+                {
+                    double d = (double)r1.num / r1.den;
+                    double d1 = (double)r2.num / r2.den;
+                    if (d < d1)
+                        return (new Rat(r1.num, r1.den));
+                    else
+                        return (new Rat(r2.num, r2.den));
+                }
+
             }
-            else
+
+            // TODO: This is a test
+            // Note the use of the override keyword, required if you want to
+            // override an inherited method.
+
+            /// <summary>
+            /// Returns a standard string representation of a rational number.
+            /// Note the use of the override keyword, which is required if you
+            /// want to override an inherited method.
+            /// </summary>
+            public override string ToString()
             {
-                return r1.Equals(r2);
+                if (den == 1)
+                {
+                    return num.ToString();
+                }
+                else
+                {
+                    return num + "/" + den;
+                }
             }
-        }
 
-        /// <summary>
-        /// Tests for inequality
-        /// </summary>
-        public static bool operator !=(Rat r1, Rat r2)
-        {
-            return !(r1 == r2);
-        }
+            /// <summary>
+            /// Reports whether this and o are the same rational number.
+            /// </summary>
+            public override bool Equals(object o)
+            {
+                // Cast o to be a Rat.  If the cast fails, we get null back.
+                Rat r = o as Rat;
 
-        /// <summary>
-        /// Returns a hash code for this Rat.  Note that
-        /// if you override Equals, you should also override
-        /// GetHashCode.  Otherwise hash tables containing
-        /// Rats won't work properly.
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return num ^ den;
-        }
+                // Make sure r is non-null and its numerator and denominator
+                // are the same as those of this.
+                return
+                    !ReferenceEquals(r, null) &&
+                    this.num == r.num &&
+                    this.den == r.den;
+            }
 
-        /// <summary>
-        /// Provides a cast from an int to a Rat
-        /// </summary>
-        public static implicit operator Rat(int n)
-        {
-            return new Rat(n);
+            /// <summary>
+            /// Tests for equality
+            /// </summary>
+            public static bool operator ==(Rat r1, Rat r2)
+            {
+                if (ReferenceEquals(r1, null))
+                {
+                    return ReferenceEquals(r2, null);
+                }
+                else
+                {
+                    return r1.Equals(r2);
+                }
+            }
+
+            /// <summary>
+            /// Tests for inequality
+            /// </summary>
+            public static bool operator !=(Rat r1, Rat r2)
+            {
+                return !(r1 == r2);
+            }
+
+            /// <summary>
+            /// Returns a hash code for this Rat.  Note that
+            /// if you override Equals, you should also override
+            /// GetHashCode.  Otherwise hash tables containing
+            /// Rats won't work properly.
+            /// </summary>
+            /// <returns></returns>
+            public override int GetHashCode()
+            {
+                return num ^ den;
+            }
+
+            /// <summary>
+            /// Provides a cast from an int to a Rat
+            /// </summary>
+            public static implicit operator Rat(int n)
+            {
+                return new Rat(n);
+            }
         }
     }
 }

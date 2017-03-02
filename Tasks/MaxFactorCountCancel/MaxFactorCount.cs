@@ -17,11 +17,12 @@ namespace Factors
         public int FindMaxFactors(int limit, int nTasks)
         {
             // Use multiple Tasks to solve slices of the problem
+            Task[] tsk = new Task[nTasks];
             Task<int>[] tasks = new Task<int>[nTasks];
             for (int i = 0; i < nTasks; i++)
             {
                 int begin = i + 1;
-                tasks[i] = Task.Run(() => FindMaxFactorsInInterval(begin, limit, nTasks));
+                tsk[i] = Task.Run(() => FindMaxFactorsInInterval(begin, limit, nTasks));
             }
 
             // Start a task that waits for the user to stop the computation

@@ -107,5 +107,10 @@ namespace FileAnalyzer
             }
             return count;
         }
+
+        private void lineCount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
