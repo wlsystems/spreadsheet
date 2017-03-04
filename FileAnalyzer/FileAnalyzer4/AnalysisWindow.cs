@@ -164,5 +164,10 @@ namespace FileAnalyzer
         {
 
         }
+
+        private void AnalysisWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

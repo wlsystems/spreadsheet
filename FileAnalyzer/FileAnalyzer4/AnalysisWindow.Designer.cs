@@ -123,7 +123,7 @@
             // lineCount
             // 
             this.lineCount.Location = new System.Drawing.Point(92, 50);
-            this.lineCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lineCount.Margin = new System.Windows.Forms.Padding(2);
             this.lineCount.Name = "lineCount";
             this.lineCount.Size = new System.Drawing.Size(60, 20);
             this.lineCount.TabIndex = 4;
@@ -132,7 +132,7 @@
             // wordCount
             // 
             this.wordCount.Location = new System.Drawing.Point(92, 84);
-            this.wordCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wordCount.Margin = new System.Windows.Forms.Padding(2);
             this.wordCount.Name = "wordCount";
             this.wordCount.Size = new System.Drawing.Size(60, 20);
             this.wordCount.TabIndex = 5;
@@ -140,7 +140,7 @@
             // charCount
             // 
             this.charCount.Location = new System.Drawing.Point(92, 119);
-            this.charCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.charCount.Margin = new System.Windows.Forms.Padding(2);
             this.charCount.Name = "charCount";
             this.charCount.Size = new System.Drawing.Size(60, 20);
             this.charCount.TabIndex = 6;
@@ -158,7 +158,7 @@
             // substringCount
             // 
             this.substringCount.Location = new System.Drawing.Point(92, 191);
-            this.substringCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.substringCount.Margin = new System.Windows.Forms.Padding(2);
             this.substringCount.Name = "substringCount";
             this.substringCount.Size = new System.Drawing.Size(60, 20);
             this.substringCount.TabIndex = 8;
@@ -166,7 +166,7 @@
             // substringBox
             // 
             this.substringBox.Location = new System.Drawing.Point(28, 163);
-            this.substringBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.substringBox.Margin = new System.Windows.Forms.Padding(2);
             this.substringBox.Name = "substringBox";
             this.substringBox.Size = new System.Drawing.Size(123, 20);
             this.substringBox.TabIndex = 9;
@@ -178,7 +178,7 @@
             // countButton
             // 
             this.countButton.Location = new System.Drawing.Point(164, 162);
-            this.countButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.countButton.Margin = new System.Windows.Forms.Padding(2);
             this.countButton.Name = "countButton";
             this.countButton.Size = new System.Drawing.Size(56, 19);
             this.countButton.TabIndex = 10;
@@ -203,9 +203,10 @@
             this.Controls.Add(this.lineLabel);
             this.Controls.Add(this.menuBar);
             this.MainMenuStrip = this.menuBar;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AnalysisWindow";
             this.Text = "File Analyzer";
+            this.Load += new System.EventHandler(this.AnalysisWindow_Load);
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
             this.ResumeLayout(false);
