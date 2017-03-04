@@ -159,5 +159,10 @@ namespace FileAnalyzer
                 CountEvent(substringBox.Text);
             }
         }
+
+        private void lineCount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
