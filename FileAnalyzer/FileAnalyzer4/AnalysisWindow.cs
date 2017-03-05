@@ -124,6 +124,7 @@ namespace FileAnalyzer
                 {
                     FileChosenEvent(fileDialog.FileName);
                 }
+                
             }
         }
 
